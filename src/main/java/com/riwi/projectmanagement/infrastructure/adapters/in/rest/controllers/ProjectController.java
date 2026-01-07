@@ -28,16 +28,19 @@ public class ProjectController {
 
     private final CreateProjectUseCase createProjectUseCase;
     private final ListProjectsUseCase listProjectsUseCase;
-    private final ActivateProjectUseCase activateProjectUseCase;  // ← NUEVO
+    private final ActivateProjectUseCase activateProjectUseCase;
+    private final DeleteProjectUseCase deleteProjectUseCase;
 
     // Constructor actualizado
     public ProjectController(
             CreateProjectUseCase createProjectUseCase,
             ListProjectsUseCase listProjectsUseCase,
-            ActivateProjectUseCase activateProjectUseCase) {  // ← NUEVO
+            ActivateProjectUseCase activateProjectUseCase,
+            DeleteProjectUseCase deleteProjectUseCase) {
         this.createProjectUseCase = createProjectUseCase;
         this.listProjectsUseCase = listProjectsUseCase;
-        this.activateProjectUseCase = activateProjectUseCase;  // ← NUEVO
+        this.activateProjectUseCase = activateProjectUseCase;
+        this.deleteProjectUseCase = deleteProjectUseCase;
     }
 
     /**
@@ -123,6 +126,36 @@ public class ProjectController {
 
         // 3. Convertir a Response
         ProjectResponse response = ProjectResponse.fromDomain(activatedProject);
+
+        // 4. Devolver respuesta HTTP 200 OK
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Endpoint: DELETE /api/projects/{id}
+     * Elimina lógicamente un proyecto
+     */
+    @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Eliminar proyecto",
+            description = "Elimina lógicamente un proyecto (soft delete)"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Proyecto eliminado exitosamente"),
+            @ApiResponse(responseCode = "400", description = "El proyecto ya está eliminado"),
+            @ApiResponse(responseCode = "401", description = "No autenticado"),
+            @ApiResponse(responseCode = "403", description = "No eres el propietario del proyecto"),
+            @ApiResponse(responseCode = "404", description = "Proyecto no encontrado")
+    })
+    public ResponseEntity<ProjectResponse> deleteProject(@PathVariable UUID id) {
+        // 1. Crear el command
+        DeleteProjectCommand command = new DeleteProjectCommand(id);
+
+        // 2. Ejecutar el caso de uso
+        Project deletedProject = deleteProjectUseCase.execute(command);
+
+        // 3. Convertir a Response
+        ProjectResponse response = ProjectResponse.fromDomain(deletedProject);
 
         // 4. Devolver respuesta HTTP 200 OK
         return ResponseEntity.ok(response);

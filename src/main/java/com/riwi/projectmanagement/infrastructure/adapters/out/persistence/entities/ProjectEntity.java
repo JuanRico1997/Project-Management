@@ -1,4 +1,4 @@
-package com.riwi.projectmanagement.infrastructure.adapters.out.persistence;
+package com.riwi.projectmanagement.infrastructure.adapters.out.persistence.entities;
 
 import com.riwi.projectmanagement.domain.models.Project;
 import com.riwi.projectmanagement.domain.models.ProjectStatus;

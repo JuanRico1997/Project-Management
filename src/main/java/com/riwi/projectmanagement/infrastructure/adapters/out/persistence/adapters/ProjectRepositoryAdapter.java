@@ -1,7 +1,9 @@
-package com.riwi.projectmanagement.infrastructure.adapters.out.persistence;
+package com.riwi.projectmanagement.infrastructure.adapters.out.persistence.adapters;
 
 import com.riwi.projectmanagement.domain.models.Project;
 import com.riwi.projectmanagement.domain.ports.out.ProjectRepositoryPort;
+import com.riwi.projectmanagement.infrastructure.adapters.out.persistence.entities.ProjectEntity;
+import com.riwi.projectmanagement.infrastructure.adapters.out.persistence.repositories.ProjectJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

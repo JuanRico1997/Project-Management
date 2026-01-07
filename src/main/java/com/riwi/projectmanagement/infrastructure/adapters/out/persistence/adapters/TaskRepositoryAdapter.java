@@ -1,7 +1,9 @@
-package com.riwi.projectmanagement.infrastructure.adapters.out.persistence;
+package com.riwi.projectmanagement.infrastructure.adapters.out.persistence.adapters;
 
 import com.riwi.projectmanagement.domain.models.Task;
 import com.riwi.projectmanagement.domain.ports.out.TaskRepositoryPort;
+import com.riwi.projectmanagement.infrastructure.adapters.out.persistence.entities.TaskEntity;
+import com.riwi.projectmanagement.infrastructure.adapters.out.persistence.repositories.TaskJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

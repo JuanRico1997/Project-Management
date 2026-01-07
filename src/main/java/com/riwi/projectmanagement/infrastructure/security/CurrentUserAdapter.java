@@ -1,4 +1,4 @@
-package com.riwi.projectmanagement.infrastructure.adapters.out.security;
+package com.riwi.projectmanagement.infrastructure.security;
 
 import com.riwi.projectmanagement.domain.ports.out.CurrentUserPort;
 import org.springframework.stereotype.Component;
@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 /**
- * Adaptador TEMPORAL - Simula un usuario autenticado
- * Más adelante lo reemplazaremos con JWT real
+ * Adaptador TEMPORAL - Usuario simulado
  */
 @Component
 public class CurrentUserAdapter implements CurrentUserPort {
@@ -17,7 +16,6 @@ public class CurrentUserAdapter implements CurrentUserPort {
 
     @Override
     public UUID getCurrentUserId() {
-        // TODO: Más adelante obtener el usuario real desde el JWT
         return TEMP_USER_ID;
     }
 }

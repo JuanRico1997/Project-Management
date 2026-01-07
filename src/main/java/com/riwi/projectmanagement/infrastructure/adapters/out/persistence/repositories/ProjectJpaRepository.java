@@ -1,5 +1,6 @@
-package com.riwi.projectmanagement.infrastructure.adapters.out.persistence;
+package com.riwi.projectmanagement.infrastructure.adapters.out.persistence.repositories;
 
+import com.riwi.projectmanagement.infrastructure.adapters.out.persistence.entities.ProjectEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
