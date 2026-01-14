@@ -158,7 +158,7 @@ La aplicación estará disponible en: `http://localhost:8080`
 
 **1. Construir y levantar contenedores**
 ```bash
-docker-compose up --build -d
+docker-compose up -d
 ```
 
 **2. Ver logs**

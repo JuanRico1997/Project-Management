@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   mysql:
@@ -41,7 +41,7 @@ services:
       SPRING_JPA_SHOW_SQL: true
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
     ports:
-      - "8080:8080"
+      - "8081:8081"
     networks:
       - project-management-network
 
